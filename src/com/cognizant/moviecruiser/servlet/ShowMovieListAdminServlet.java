@@ -46,7 +46,7 @@ public class ShowMovieListAdminServlet extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 	/**

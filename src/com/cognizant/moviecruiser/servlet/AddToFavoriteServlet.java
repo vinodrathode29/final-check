@@ -53,7 +53,7 @@ public class AddToFavoriteServlet extends HttpServlet {
 			
           
      } catch(Exception e) {
-            
+    	 e.printStackTrace(); 
      }
 
 	}

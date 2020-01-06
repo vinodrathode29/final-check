@@ -43,7 +43,7 @@ public class ShowEditMovieServlet extends HttpServlet {
 			rd.forward(request, response);
 		} 
 		catch (Exception e) {
-					
+			e.printStackTrace();
 		}
 	}
 
