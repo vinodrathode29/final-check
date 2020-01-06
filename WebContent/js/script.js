@@ -17,7 +17,7 @@ function validation() {
         alert("Gross has to be a number.");
 		return false;
     }
-	var c = document.forms["myform"]["dolaunch"].value;
+	var c = document.forms["myform"]["txtDoB"].value;
 	if(c== "") {
         alert("Date of Launch is required.");
 		return false;
