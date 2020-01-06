@@ -46,7 +46,7 @@ public class ShowMovieListCustomerServlet extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+		
 		}
 	}
 	/**
