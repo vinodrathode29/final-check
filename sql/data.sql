@@ -3,7 +3,16 @@
 -- view Table
 -- ------------------------------------------------------------------------------------
 
-select *from movie;
+select 
+mo_title as Title,
+mo_box_office as BoxOffice,
+mo_active as Active,
+mo_date_of_launch as DateOfLaunch ,
+mo_genre as Genre,
+mo_has_teaser as HasTeaser
+from movie;
+
+delete from movie;
 
 -- -------------------------------------------------------------------------------------
 -- Adding Admin Movies IN Table
@@ -18,19 +27,34 @@ values
 
 -- To Display
 
-select *from movie;
+select 
+mo_title as Title,
+mo_box_office as BoxOffice,
+mo_active as Active,
+mo_date_of_launch as DateOfLaunch ,
+mo_genre as Genre,
+mo_has_teaser as HasTeaser
+from movie;
 
 -- --------------------------------------------------------------------------------------
 -- Update Movie
 -- --------------------------------------------------------------------------------------
 
 update movie 
-set mo_title ='BASHA' 
+set mo_title ='Basha' 
 where mo_id= 1;
 
 -- To Display
 
-select *from movie;
+select 
+mo_title as Title,
+mo_box_office as BoxOffice,
+mo_active as Active,
+mo_date_of_launch as DateOfLaunch ,
+mo_genre as Genre,
+mo_has_teaser as HasTeaser
+from movie;
+
 
 -- --------------------------------------------------------------------------------------
 -- Creating Users
@@ -44,7 +68,10 @@ insert into user(us_id,us_name)
  
  -- To Display
  
-select *from user;
+select 
+us_id as Id,
+us_name as Name 
+from user;
  
 delete from user;
 
@@ -52,17 +79,19 @@ delete from user;
 -- Customer Movie List
 -- --------------------------------------------------------------------------------------
 
-select mo_title, mo_has_teaser, mo_box_office, mo_genre
+select mo_title as Title,
+mo_has_teaser as HasTeaser,
+mo_box_office as BoxOffice,
+mo_genre as Genre
 from movie
 where mo_active='Yes'
-and mo_date_of_launch  <= (select(curdate())); 
+and mo_date_of_launch  <= (curdate()); 
  
  -- --------------------------------------------------------------------------------------
 -- Inserting Items in Favorites
 -- --------------------------------------------------------------------------------------
 
-insert into favorite(fv_us_id,fv_mv_id) values (1,1);
-insert into favorite(fv_us_id,fv_mv_id) values (1,3);
+insert into favorite(fv_us_id,fv_mv_id) values (1,1),(1,3);
 
 -- insert into favorite(fv_us_id,fv_mv_id) values (2,3);
 
@@ -70,14 +99,20 @@ insert into favorite(fv_us_id,fv_mv_id) values (1,3);
 -- To Display Favorites with ID
 -- --------------------------------------------------------------------------------------
 
-select *from favorite;
+select 
+fv_id as FavoriteId,
+fv_us_id as FavUserId,
+fv_mv_id as FavMovieId
+from favorite;
 
 delete from favorite;
 -- --------------------------------------------------------------------------------------
 --  To View Favorites after Adding
 -- --------------------------------------------------------------------------------------
 
-select mo_title,mo_has_teaser, mo_box_office 
+select  mo_title as Title,
+mo_has_teaser as HasTeaser,
+mo_box_office as BoxOffice
 from movie
 inner join favorite 
 on fv_mv_id=mo_id
@@ -86,8 +121,7 @@ where fv_us_id=1;
 
 -- Calculation of No. of Favorites
 
-select count(mo_title) 
-as No_of_favorites 
+select count(mo_title) as No_of_Favorites 
 from movie
 inner join favorite on fv_mv_id=mo_id
 where fv_us_id=1;  
@@ -104,7 +138,10 @@ limit 1;
 --  To View Cart after Deleting
 -- --------------------------------------------------------------------------------------
 
-select mo_title,mo_has_teaser, mo_box_office 
+select 
+mo_title as Title,
+mo_has_teaser as HasTeaser,
+mo_box_office as BoxOffice 
 from movie
 inner join favorite 
 on fv_mv_id=mo_id
@@ -122,6 +159,10 @@ where fv_us_id=1;
 -- To Display Favorites with ID After Deleting
 -- --------------------------------------------------------------------------------------
 
-select *from favorite;
+select 
+fv_id as FavoriteId,
+fv_us_id as FavUserId,
+fv_mv_id as FavMovieId
+from favorite;
 
 -- --------------------------------------------------------------------------------------
