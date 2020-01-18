@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cognizant.moviecruiser.dao.MovieDao;
 import com.cognizant.moviecruiser.dao.MovieDaoCollectionImpl;
+import com.cognizant.moviecruiser.dao.MovieDaoSqlImp;
 import com.cognizant.moviecruiser.model.Movie;
 import com.cognizant.moviecruiser.util.DateUtil;
 
@@ -35,7 +36,7 @@ public class ShowEditMovieServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			MovieDao movieDao = new MovieDaoCollectionImpl();
+			MovieDao movieDao = new MovieDaoSqlImp();
 			Long movieId = Long.parseLong(request.getParameter("id"));
 			Movie movie = movieDao.getMovie(movieId);
 			request.setAttribute("movie", movie);
